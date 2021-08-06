@@ -1,0 +1,34 @@
+.cartItem {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 1.7rem;
+}
+
+.cartItem__info {
+  padding-left: 20px;
+  width: 40rem;
+  min-width: 20rem;
+}
+
+.cartItem__image {
+  object-fit: contain;
+  width: 180px;
+  height: 180px;
+}
+
+.cartItem__rating {
+  display: flex;
+  margin: 5px 0;
+}
+
+.starIcon {
+  color: #ffd814;
+  width: 3rem !important;
+  height: 4rem !important;
+}
+
+.cartItem__title {
+  margin-bottom: 5px;
+  font-weight: 600;
+}

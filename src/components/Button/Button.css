@@ -1,0 +1,15 @@
+.buttonClickable {
+  background: #ffd814;
+  border: 1px solid;
+  margin-top: 10px;
+  border-color: #a88734 #9c7e31 #846a29;
+  color: #111;
+  padding: 5px 10px;
+  border-radius: 20px;
+  width: 180px;
+  font-size: 14px;
+}
+
+.buttonClickable:hover {
+  background: #e6c005;
+}

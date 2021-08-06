@@ -1,0 +1,28 @@
+.contactData {
+  margin: 20px auto;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 2px 3px #ccc;
+  background-color: #f3f3f3;
+  border: 1px solid #dddddd;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* @media (min-width: 600px) {
+  .contactData {
+    width: 500px;
+  }
+} */
+
+.contactData > form > input {
+  background-color: #f3f3f3;
+}
+
+.contactData > form > button {
+  width: 92%;
+  border-radius: 2px;
+  padding: 8px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
