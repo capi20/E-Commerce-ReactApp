@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 import './Login.css'
 import { auth } from '../../firebase'
+import logo from '../../assets/loginLogo.png'
 
 class Login extends Component {
     state = {
@@ -48,7 +49,7 @@ class Login extends Component {
                 <Link to="/">
                     <img 
                         className="login__logo" 
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png" 
+                        src={logo} 
                         alt="Amazon Logo"/>
                 </Link>
                 <div className="login__container">
@@ -70,10 +71,10 @@ class Login extends Component {
                         <button type="submit" className="login__signInButton" onClick={this.signInHandler}>Sign In</button>
                     </form>
                     <p>
-                        By signing-in you agree to Amazon's Conditions of Use & Sale.
+                        By signing-in you agree to our Conditions of Use & Sale.
                         Please see our Privacy Notice, our Cookies Notice and our Internet-Based Ads Notice.
                     </p>
-                    <button className="login__signUpButton" onClick={this.signUpHandler}>Create your Amazon account</button>
+                    <button className="login__signUpButton" onClick={this.signUpHandler}>Create your account</button>
                 </div>    
             </div>
         )

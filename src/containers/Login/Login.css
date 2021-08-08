@@ -8,15 +8,13 @@
 }
 
 .login__logo {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px auto;
   object-fit: contain;
-  width: 100px;
-  margin-right: auto;
-  margin-left: auto;
+  height: 18rem;
 }
 
 .login__container {
+  margin-top: -5rem;
   width: 300px;
   height: fit-content;
   display: flex;

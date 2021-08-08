@@ -6,6 +6,7 @@ import './Header.css'
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { auth } from '../../firebase'
+import logo from '../../assets/logo.png'
 
 function Header(props) {
 
@@ -18,12 +19,13 @@ function Header(props) {
     return (
         <div className="header">
             <Link to="/">
-                <img className="header__logo" src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="amazon logo"/>
+                <img className="header__logo" src={logo} alt="amazon logo"/>
             </Link>
-            <div className="header__search">
-                <input className="header__searchInput" type="text" />
-                <SearchIcon className="header__searchIcon" />
-            </div>
+
+            <form action="#" className="header__search">
+                    <input type="text" className="header__searchInput" placeholder="Search books"/>
+                    <SearchIcon className="header__searchIcon" />
+            </form>
 
             <div className="header__nav">
                 <NavLink to={!props.user && "/login"} style={{ textDecoration: 'none' }}>
