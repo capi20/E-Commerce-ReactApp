@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
 
 import './Header.css'
@@ -36,15 +35,15 @@ function Header(props) {
                 </NavLink>
                 <NavLink to={"/orders"} style={{ textDecoration: 'none' }}>
                     <div className="header__option">
-                        <span className="header__optionTop">Returns</span>
-                        <span className="header__optionBottom">& Orders</span>
+                        <span className="header__optionTop">Your</span>
+                        <span className="header__optionBottom">Orders</span>
                     </div>
                 </NavLink>
 
                 <NavLink to="/checkout" style={{ textDecoration: 'none' }}>
                     <div className="header__optionCart">
                         <ShoppingCartIcon className="cartIcon"/>
-                        <span className="header__optionBottom header__CartCount">{props.cartItems.length}</span>
+                        <span className="header__optionBottom header__CartCount">{props.totalItems}</span>
                     </div>
                 </NavLink>
             </div>
@@ -52,11 +51,4 @@ function Header(props) {
     )
 }
 
-const mapStatetoProps = state => {
-    return {
-        cartItems: state.shopping.cart,
-        user: state.shopping.user
-    }
-}
-
-export default connect(mapStatetoProps)(Header)
+export default Header

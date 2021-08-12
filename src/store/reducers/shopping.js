@@ -48,10 +48,6 @@ const removeItem = (state, action) => {
     return updateObject(state, updatedState)
 }
 
-// const setUser = (state, action) => {
-//     return updateObject(state, action.user)
-// }
-
 const setContactData = (state, action) => {
     let fullData = {...action.data}
     fullData['email'] = state.user.email
@@ -65,11 +61,18 @@ const reducer = (state = initialState, action) => {
         case actionTypes.ADD_TO_CART: return addItem(state, action)
         case actionTypes.REMOVE_FROM_CART: return removeItem(state, action)
         case actionTypes.SET_USER: 
-            return {
-                ...state,
+            return updateObject(state, {
                 user: action.user
-            }
+            })
         case actionTypes.SET_CONTACT_DATA: return setContactData(state, action)
+        case actionTypes.SET_CART: 
+            return updateObject(state, {
+                cart: [],
+                amount: 0,
+                count: 0,
+                purchasing: false,
+                contactData: null
+            }) 
         default: return state
     }
 }

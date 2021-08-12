@@ -3,10 +3,18 @@
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
+  font-size: 1.6rem;
+}
+
+.home > p {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-top: 10rem;
 }
 
 .home__row {
   display: flex;
+  flex-wrap: wrap;
   z-index: 1;
   margin-left: 5px;
   margin-right: 5px;
@@ -17,4 +25,27 @@
   z-index: -1;
   margin-bottom: -500px;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+.orderConfirm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 1 50%;
+  font-size: 2rem;
+  position: fixed;
+  top: 20%;
+  z-index: 500;
+  background-color: black;
+  color: white;
+  padding: 1.6rem 3rem;
+  box-sizing: border-box;
+  transition: all 0.3s ease-out;
+}
+
+.orderConfirm__Icon {
+  height: 3rem !important;
+  width: 3rem !important;
+  margin-right: 1rem;
+  color: #ffd814;
 }

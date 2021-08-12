@@ -20,7 +20,7 @@ class Payment extends Component {
             contactData: this.props.contact,
             amount: this.props.totalAmount,
             orderedItems: this.props.cartItems,
-            totalCount: this.props.totalCount
+            totalItems: this.props.totalItems
         }
 
         this.props.onPurchaseStart()
@@ -36,7 +36,7 @@ class Payment extends Component {
     render () {
         let summary = <Redirect to="/" />
 
-        if (this.props.totalCount > 0) {
+        if (this.props.totalItems > 0) {
             const purchasedRedirect = this.props.purchased ? <Redirect to="/" /> : null
             summary = (
                 <div className="payment">
@@ -58,7 +58,7 @@ class Payment extends Component {
                                         let key   = obj[0];
                                         key = key.substr(0,1).toUpperCase() + key.substr(1,)
                                         const value = obj[1];
-                                        return <p><span className="payment__addressField"><strong>{key}</strong>: </span> {value}</p>
+                                        return <p className="payment__addressField">{key}: {value}</p>
                                     })
                                 }
                             </div>
@@ -106,7 +106,7 @@ class Payment extends Component {
 
         return (
             <Aux>
-                <Header/>
+                <Header totalItems={this.props.totalItems} user={this.props.user}/>
                 {summary}
             </Aux>
         )
@@ -120,7 +120,7 @@ const mapStatetoProps = state => {
         user: state.shopping.user,
         contact: state.shopping.contactData,
         totalAmount: state.shopping.amount,
-        totalCount: state.shopping.count,
+        totalItems: state.shopping.count,
         purchased: state.order.purchased,
         loading: state.order.loading
     }

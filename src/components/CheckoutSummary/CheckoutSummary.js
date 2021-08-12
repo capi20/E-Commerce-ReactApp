@@ -12,8 +12,8 @@ function CheckoutSummary(props) {
                 <input type="checkbox"/>This order contains a gift
             </small>
 
-            <Button disabled={!props.purchasingState} clicked={props.checkoutContinued}>Proceed to Checkout</Button>
-            <Button clicked={props.checkoutCancelled}>Continue Shopping</Button>
+            <Button className="checkoutContinue" disabled={!props.purchasingState} clicked={props.checkoutContinued}>Proceed to Checkout</Button>
+            <Button className="shoppingContinue" clicked={props.checkoutCancelled}>Continue Shopping</Button>
         </div>
     )
 }

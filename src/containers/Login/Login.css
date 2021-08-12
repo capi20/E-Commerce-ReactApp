@@ -10,7 +10,7 @@
 .login__logo {
   margin: 20px auto;
   object-fit: contain;
-  height: 18rem;
+  height: 20rem;
 }
 
 .login__container {
@@ -43,7 +43,8 @@
 }
 
 .login__container > form > input:focus {
-  border-color: #f0c14b;
+  border-color: #ffd814;
+  outline: none;
 }
 
 .login__container > p {
@@ -52,7 +53,7 @@
 }
 
 .login__signInButton {
-  background: #f0c14b;
+  background: #ffd814;
   border-radius: 2px;
   width: 100%;
   height: 30px;
@@ -70,4 +71,5 @@
   margin-top: 10px;
   border-color: darkgray;
   font-size: 1.5rem;
+  background-color: lightgray;
 }

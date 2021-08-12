@@ -25,3 +25,8 @@
   width: 100%;
   padding: 8px;
 }
+
+.shoppingContinue {
+  background-color: lightgray;
+  border: 1px solid darkgray;
+}

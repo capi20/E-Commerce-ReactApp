@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import './Login.css'
 import { auth } from '../../firebase'
 import logo from '../../assets/loginLogo.png'
+import Button from '../../components/Button/Button'
 
 class Login extends Component {
     state = {
@@ -25,7 +26,7 @@ class Login extends Component {
         auth.signInWithEmailAndPassword(this.state.email, this.state.password)
             .then((auth) => {
                 if ( auth ) {
-                    this.props.history.push('/')
+                    this.props.history.goBack()
                 }
             })
             .catch(error => alert(error.message))
@@ -37,7 +38,7 @@ class Login extends Component {
         auth.createUserWithEmailAndPassword(this.state.email, this.state.password)
             .then((auth) => {
                 if ( auth ) {
-                    this.props.history.push('/')
+                    this.props.history.goBack()
                 }
             })
             .catch(error => alert(error.message))
@@ -68,13 +69,13 @@ class Login extends Component {
                             value={this.state.password} 
                             onChange={(event) => this.inputChangedHandler(event, 'password')}/>
     
-                        <button type="submit" className="login__signInButton" onClick={this.signInHandler}>Sign In</button>
+                        <Button type="submit" className="login__signInButton" clicked={this.signInHandler}>Sign In</Button>
                     </form>
                     <p>
                         By signing-in you agree to our Conditions of Use & Sale.
                         Please see our Privacy Notice, our Cookies Notice and our Internet-Based Ads Notice.
                     </p>
-                    <button className="login__signUpButton" onClick={this.signUpHandler}>Create your account</button>
+                    <Button className="login__signUpButton" clicked={this.signUpHandler}>Create your account</Button>
                 </div>    
             </div>
         )

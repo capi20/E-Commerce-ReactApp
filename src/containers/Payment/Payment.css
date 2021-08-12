@@ -37,10 +37,11 @@
 }
 
 .payment__addressField {
-  margin-right: 10px;
+  font-weight: 600;
 }
 
 .payment__total > button {
   margin-top: 30px;
   padding: 10px;
+  font-size: 1.8rem;
 }

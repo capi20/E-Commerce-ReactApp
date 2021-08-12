@@ -2,6 +2,7 @@ export const ADD_TO_CART = 'ADD_TO_CART'
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 export const SET_USER = 'SET_USER'
 export const SET_CONTACT_DATA = 'SET_CONTACT_DATA'
+export const SET_CART = 'SET_CART'
 
 export const ORDER_INIT = 'ORDER_INIT'
 export const PLACE_ORDER_START = 'PLACE_ORDER_START'

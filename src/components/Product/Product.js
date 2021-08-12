@@ -1,58 +1,42 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 
 import './Product.css'
-import * as actionTypes from '../../store/actionTypes'
 import StarIcon from '@material-ui/icons/Star';
 import Button from '../Button/Button'
+import { formatNumber } from '../../utility/formatNumber'
 
-class Product extends Component {
-
-    render () {
+function Product(props) {
         const itemAdded = {
-            id: this.props.id,
-            title: this.props.title,
-            image: this.props.image,
-            price: this.props.price,
-            rating: this.props.rating
+            id: props.id,
+            title: props.title,
+            image: props.image,
+            price: props.price,
+            rating: props.rating
         }
 
         return (
-            <div className="product" id={this.props.id}>
+            <div className="product" id={props.id}>
                 <div className="product__info">
-                    <p>{this.props.title}</p>
+                    <p>{props.title}</p>
                     <p className="product__price">
                         <small>₹</small>
-                        <strong>{this.props.price.toFixed(2)}</strong>
+                        <strong>{formatNumber(props.price)}</strong>
                     </p>
                     <div className="product__rating">
                         {
-                            Array(this.props.rating).fill().map((_, i) => (
+                            Array(props.rating).fill().map((_, i) => (
                                 <p key={i}><StarIcon className="starIcon"/></p>
                             ))
                         }
                     </div>
                 </div>
     
-                <img src={this.props.image} alt="The lean start"/>
+                <img src={props.image} alt="The lean start"/>
                 
-                <Button clicked={() => this.props.onItemAdded(itemAdded)}>Add to Cart</Button>
+                <Button clicked={() => props.clicked(itemAdded)}>Add to Cart</Button>
             </div>
         )
     }
-    
-}
 
-// const mapStatetoProps = state => {
-//     return {
-//         cartItems: state.cart
-//     }
-// }
 
-const mapDispatchtoProps = dispatch => {
-    return {
-        onItemAdded: (itemAdded) => dispatch({type: actionTypes.ADD_TO_CART, item: itemAdded})
-    }
-}
-
-export default connect(null, mapDispatchtoProps)(Product)
+export default Product

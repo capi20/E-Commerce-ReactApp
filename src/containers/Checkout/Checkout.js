@@ -13,11 +13,15 @@ import ContactData from './ContactData/ContactData'
 class Checkout extends Component {
 
     checkoutCancelledHandler = () => {
-        this.props.history.replace('/')
+        this.props.history.push('/')
     }
 
     checkoutContinuedHandler = () => {
-        this.props.history.replace('/checkout/contact-data')
+        if (this.props.user) {
+            this.props.history.replace('/checkout/contact-data')
+        } else {
+            this.props.history.push('/login')
+        }
     }
 
     render () {
@@ -26,7 +30,7 @@ class Checkout extends Component {
                             : null
         return (
             <Aux>
-                <Header/>
+                <Header totalItems={this.props.totalItems} user={this.props.user}/>
                 <div className="checkout">
                     <div className="checkout__left">
                         <img className="checkout__ad"

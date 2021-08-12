@@ -1,60 +1,108 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import './Home.css'
 import Product from '../../components/Product/Product'
 import homeImage from '../../assets/home.jpg'
 import Header from '../../components/Header/Header'
 import Aux from '../../hoc/Auxi'
+import axios from '../../axios-orders'
+import * as actionTypes from '../../store/actionTypes'
+import Spinner from '../../components/Spinner/Spinner'
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
-function Home() {
-    return (
-        <Aux>
-            <Header/>
-            <div className="home">
-                <div className="home__container">
-                    <img className="home__image" 
-                    src={homeImage}
-                    alt="Home" />
+class Home extends Component {
+    state = {
+        books: [],
+        error: false
+    }
+    
+    componentDidMount () {
+        this.setBooks()
 
-                    <div className="home__row">
-                        <Product title="The Alchemist"
-                                id={1} 
-                                price={197.00}
-                                image="https://images-na.ssl-images-amazon.com/images/I/410llGwMZGL._SX328_BO1,204,203,200_.jpg"
-                                rating={5}/>
-                        <Product title="Man's Search For Meaning: The classic tribute to hope from the Holocaust"
-                                id={2}  
-                                price={174.00}
-                                image="https://images-na.ssl-images-amazon.com/images/I/41ZgK6u73qL._SX313_BO1,204,203,200_.jpg"
-                                rating={4}/>
-                        <Product title="To Kill A Mockingbird: 50th Anniversary Edition: 60th Anniversary Edition"
-                                id={3}  
-                                price={335.00}
-                                image="https://images-na.ssl-images-amazon.com/images/I/51Z9p5AecCL._SX307_BO1,204,203,200_.jpg"
-                                rating={4}/>
+        setTimeout(() => {
+            if (this.props.hasPurchased) {   
+                this.props.orderInit()
+                this.props.setCart()
+            }
+        }, 2000)
+    }
+
+    setBooks = () => {
+        axios.get('/books.json')
+            .then(response => {
+                this.setState({books: response.data})
+            })
+            .catch(error => {
+                this.setState({error: true})
+            })
+    }
+
+    render () {
+        let books = this.state.error ? <p>Books can't be loaded!</p> : <Spinner/>
+        let orderConfirm = null
+
+        if (Object.keys(this.state.books).length > 0) {
+            books = (
+                
+                    <div className="home__container">
+                        <img className="home__image" 
+                        src={homeImage}
+                        alt="Home" />
+    
+                        <div className="home__row">
+                            {
+                                Object.keys(this.state.books).map(book => {
+                                    return <Product title={this.state.books[book].title}
+                                            key={this.state.books[book].id}
+                                            id={this.state.books[book].id} 
+                                            price={parseFloat(this.state.books[book].price)}
+                                            image={this.state.books[book].image}
+                                            rating={parseFloat(this.state.books[book].rating)}
+                                            clicked={this.props.onItemAdded}/>
+                                })
+                            }  
+                        </div>
                     </div>
-
-                    <div className="home__row">
-                        <Product title="Attitude Is Everything: Change Your Attitude ... Change Your Life!"
-                                id={4} 
-                                price={159.00}
-                                image="https://images-na.ssl-images-amazon.com/images/I/41F8ATXoMOL._SX317_BO1,204,203,200_.jpg"
-                                rating={4}/>
-                        <Product title="Ikigai: The Japanese secret to a long and happy life"
-                                id={5}  
-                                price={317.00}
-                                image="https://images-na.ssl-images-amazon.com/images/I/51T8OXMiB5L._SX356_BO1,204,203,200_.jpg"
-                                rating={4}/>
-                        <Product title="The Subtle Art of Not Giving a F*ck: A Counterintuitive Approach to Living a Good Life" 
-                                id={6}
-                                price={322.00}
-                                image="https://images-na.ssl-images-amazon.com/images/I/511vJPN7p5L._SX331_BO1,204,203,200_.jpg"
-                                rating={5}/>
-                    </div>
+            )
+            
+            orderConfirm = (
+                <div className="orderConfirm"
+                    style={{
+                        transform: this.props.hasPurchased ? 'translateY(0)' : 'translateY(-100vh)',
+                        opacity: this.props.hasPurchased ? '1' : '0'
+                    }}>
+                    <CheckCircleIcon className="orderConfirm__Icon"/>
+                    Your order has been placed!
                 </div>
-            </div>
-        </Aux>
-    )
+            )
+        }
+        return (
+            <Aux>
+                <Header totalItems={this.props.totalItems} user={this.props.user}/>
+                <div className="home">
+                    {orderConfirm}
+                    {books}
+                </div>               
+            </Aux>
+        )
+    }
 }
 
-export default Home
+const mapStatetoProps = state => {
+    return {
+        hasPurchased: state.order.purchased,
+        totalItems: state.shopping.count,
+        user: state.shopping.user
+    }
+}
+
+const mapDispatchtoProps = dispatch => {
+    return {
+        orderInit: () => dispatch({type: actionTypes.ORDER_INIT}),
+        setCart: () => dispatch({type: actionTypes.SET_CART}),
+        onItemAdded: (itemAdded) => dispatch({type: actionTypes.ADD_TO_CART, item: itemAdded})
+    }
+}
+
+export default connect(mapStatetoProps, mapDispatchtoProps)(Home)

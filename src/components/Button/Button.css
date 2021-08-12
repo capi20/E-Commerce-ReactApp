@@ -1,4 +1,4 @@
-.buttonClickable {
+.clickable {
   background: #ffd814;
   border: 1px solid;
   margin-top: 10px;
@@ -10,6 +10,6 @@
   font-size: 14px;
 }
 
-.buttonClickable:hover {
+.clickable:hover {
   background: #e6c005;
 }

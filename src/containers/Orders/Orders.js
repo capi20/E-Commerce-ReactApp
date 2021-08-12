@@ -65,7 +65,7 @@ class Orders extends Component {
         
         return(
             <Aux>
-                <Header/>
+                <Header totalItems={this.props.totalItems} user={this.props.user}/>
                 {orders}       
             </Aux>
         )
@@ -76,6 +76,7 @@ const mapStatetoProps = state => {
     return {
         orders: state.order.orders,
         loading: state.order.loading,
+        totalItems: state.shopping.count,
         user: state.shopping.user
     }
 }

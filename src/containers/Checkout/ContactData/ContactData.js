@@ -57,8 +57,8 @@ class ContactData extends Component {
                 value: '',
                 validation: {
                     required: true,
-                    minLength: 5,
-                    maxLength: 5
+                    minLength: 6,
+                    maxLength: 6
                 },
                 valid: false,
                 touched: false
@@ -155,9 +155,7 @@ class ContactData extends Component {
                 <Button disabled={!this.state.formIsValid} clicked={this.contactDataHandler}>Continue</Button>
             </form>
         )
-        // if (this.props.loading) {
-        //     form = <Spinner/>
-        // }
+
         return (
             <div className='contactData'>
                 <h4>Enter your Contact Data</h4>
@@ -169,8 +167,8 @@ class ContactData extends Component {
 
 const mapDispatchtoProps = dispatch => {
     return {
-        onAddedData: (formData) => dispatch({type: actionTypes.SET_CONTACT_DATA, data: formData}),
-        orderInit: () => dispatch({type: actionTypes.ORDER_INIT})
+        orderInit: () => dispatch({type: actionTypes.ORDER_INIT}),
+        onAddedData: (formData) => dispatch({type: actionTypes.SET_CONTACT_DATA, data: formData})
     }
 }
 
