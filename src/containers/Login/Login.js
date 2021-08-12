@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 import './Login.css'
 import { auth } from '../../firebase'
-import logo from '../../assets/loginLogo.png'
 import Button from '../../components/Button/Button'
 
 class Login extends Component {
@@ -50,7 +49,7 @@ class Login extends Component {
                 <Link to="/">
                     <img 
                         className="login__logo" 
-                        src={logo} 
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png"
                         alt="Amazon Logo"/>
                 </Link>
                 <div className="login__container">
