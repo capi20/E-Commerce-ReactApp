@@ -1,4 +1,4 @@
-This is an e-commerce application to purcahse books. [Click here](https://e-commerce-app-f4775.web.app/) to see live demo. In this project, I've used firebase authentication for sign in and sign up. You have to paste you firebase app configuration in src/firebase.js file in order to work sign in/up properly. 
+This is an e-commerce application to purcahse books. [Click here](https://e-commerce-app-f4775.web.app/) to see live demo. In this project, I've used firebase authentication for user sign in/up. You have to paste your firebase app configuration in src/firebase.js file in order to work sign in/up properly. 
 
 ![Home screen](./src/assets/screenshot1.PNG)
 ![Checkout screen](./src/assets/screenshot2.PNG)
