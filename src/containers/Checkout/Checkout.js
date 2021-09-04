@@ -4,11 +4,11 @@ import { Route } from 'react-router-dom'
 
 import './Checkout.css'
 import CheckoutSummary from '../../components/CheckoutSummary/CheckoutSummary'
-import CartItem from '../../components/CartItem/CartItem'
 import * as actionTypes from '../../store/actionTypes'
 import Header from '../../components/Header/Header'
 import Aux from '../../hoc/Auxi'
 import ContactData from './ContactData/ContactData'
+import Product from '../../components/Product/Product'
 
 class Checkout extends Component {
 
@@ -32,24 +32,22 @@ class Checkout extends Component {
             <Aux>
                 <Header totalItems={this.props.totalItems} user={this.props.user}/>
                 <div className="checkout">
-                    <div className="checkout__left">
-                        <img className="checkout__ad"
-                            src="https://images-na.ssl-images-amazon.com/images/G/02/UK_CCMP/TM/OCC_Amazon1._CB423492688_/jpg"
-                            alt="Ad" /> 
+                    <div className="checkout__left"> 
         
                         <div>
                             <h2 className="checkout__title">{this.props.purchasingState ? 
                                 'Your Shopping Cart' : 
                                 'Your Shopping Cart is empty. Please add some items.'}</h2>
                             { this.props.cartItems.map((item, i) => {
-                                return <CartItem
-                                    key={i}
-                                    id={item.id}
-                                    title={item.title}
-                                    image={item.image}
-                                    price={item.price}
-                                    rating={item.rating}
-                                    clicked={this.props.OnItemRemoved} />
+                                return <Product 
+                                            key={i}
+                                            id={item.id}
+                                            title={item.title}
+                                            image={item.image}
+                                            price={item.price}
+                                            rating={item.rating}
+                                            clicked={this.props.onItemRemoved}
+                                            btnType="remove"/>
                                 }
                             )}
                         </div>
@@ -82,7 +80,7 @@ const mapStatetoProps = state => {
 
 const mapDispatchtoProps = dispatch => {
     return {
-        OnItemRemoved: (itemRemovedId) => dispatch({type: actionTypes.REMOVE_FROM_CART, itemId: itemRemovedId})
+        onItemRemoved: (itemRemovedId) => dispatch({type: actionTypes.REMOVE_FROM_CART, itemId: itemRemovedId})
     }
 }
 

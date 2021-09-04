@@ -42,6 +42,8 @@
 
 .payment__total > button {
   margin-top: 30px;
-  padding: 10px;
+  margin-bottom: 30px;
   font-size: 1.8rem;
+  width: 200px;
+  height: 50px;
 }

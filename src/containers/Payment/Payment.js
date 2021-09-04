@@ -5,12 +5,12 @@ import { Link, Redirect } from 'react-router-dom'
 import './Payment.css'
 import Header from '../../components/Header/Header'
 import Aux from '../../hoc/Auxi'
-import CartItem from '../../components/CartItem/CartItem'
 import * as actionTypes from '../../store/actionTypes'
 import { formatNumber } from '../../utility/formatNumber'
 import Button from '../../components/Button/Button'
 import axios from '../../axios-orders'
 import Spinner from '../../components/Spinner/Spinner'
+import Product from '../../components/Product/Product'
 
 class Payment extends Component {
     orderHandler = (event) => {
@@ -70,14 +70,15 @@ class Payment extends Component {
                             </div>
                             <div className="payment__items">
                                 { this.props.cartItems.map((item, i) => {
-                                    return <CartItem
-                                        key={i}
-                                        id={item.id}
-                                        title={item.title}
-                                        image={item.image}
-                                        price={item.price}
-                                        rating={item.rating}
-                                        clicked={this.props.onItemRemoved} />
+                                    return <Product 
+                                            key={i}
+                                            id={item.id}
+                                            title={item.title}
+                                            image={item.image}
+                                            price={item.price}
+                                            rating={item.rating}
+                                            clicked={this.props.onItemRemoved}
+                                            btnType="remove"/>
                                     }
                                 )}
                             </div>

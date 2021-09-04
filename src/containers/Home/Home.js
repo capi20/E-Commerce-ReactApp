@@ -59,7 +59,9 @@ class Home extends Component {
                                             price={parseFloat(this.state.books[book].price)}
                                             image={this.state.books[book].image}
                                             rating={parseFloat(this.state.books[book].rating)}
-                                            clicked={this.props.onItemAdded}/>
+                                            clicked={this.props.onItemAdded}
+                                            btnType="add"
+                                            />
                                 })
                             }  
                         </div>

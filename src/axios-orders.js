@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'Firebase Database URL'
+    baseURL: 'PASTE YOUR FIREBASE DB API'
 })
 
 export default instance

@@ -16,24 +16,34 @@ function Product(props) {
 
         return (
             <div className="product" id={props.id}>
-                <div className="product__info">
-                    <p>{props.title}</p>
-                    <p className="product__price">
-                        <small>₹</small>
-                        <strong>{formatNumber(props.price)}</strong>
-                    </p>
-                    <div className="product__rating">
-                        {
-                            Array(props.rating).fill().map((_, i) => (
-                                <p key={i}><StarIcon className="starIcon"/></p>
-                            ))
-                        }
+                <img src={props.image} alt={props.title}/>
+                <div className="product__right">
+                    <div className="product__info">
+                        <p>{props.title}</p>
+                        <p className="product__price">
+                            <small>₹</small>
+                            <strong>{formatNumber(props.price)}</strong>
+                        </p>
+                        <div className="product__rating">
+                            {
+                                Array(props.rating).fill().map((_, i) => (
+                                    <span key={i}><StarIcon className="starIcon"/></span>
+                                ))
+                            }
+                        </div>
                     </div>
+                    {
+                        props.btnType === 'add' 
+                        ? <Button clicked={() => props.clicked(itemAdded)}>Add to Cart</Button>
+                        : null
+                    }
+                    {
+                        props.btnType === 'remove' 
+                        ? <Button clicked={() => props.clicked(props.id)}>Remove from Cart</Button>
+                        : null
+                    }
+                    
                 </div>
-    
-                <img src={props.image} alt="The lean start"/>
-                
-                <Button clicked={() => props.clicked(itemAdded)}>Add to Cart</Button>
             </div>
         )
     }

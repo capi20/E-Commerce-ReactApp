@@ -24,6 +24,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.PLACE_ORDER_FAIL: return updateObject(state, { loading: false })
         case actionTypes.FETCH_ORDERS_START: return updateObject(state, { loading: true })
         case actionTypes.FETCH_ORDERS_SUCCESS: 
+            console.log(action.orders)
             return updateObject(state, {
                 orders: action.orders,
                 loading: false

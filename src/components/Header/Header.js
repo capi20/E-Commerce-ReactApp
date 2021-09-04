@@ -5,6 +5,7 @@ import './Header.css'
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { auth } from '../../firebase'
+import logo from '../../assets/logo.png'
 
 function Header(props) {
 
@@ -17,7 +18,7 @@ function Header(props) {
     return (
         <div className="header">
             <Link to="/">
-                <img className="header__logo" src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="amazon logo"/>
+                <img className="header__logo" src={logo} alt="amazon logo"/>
             </Link>
 
             <form action="#" className="header__search">

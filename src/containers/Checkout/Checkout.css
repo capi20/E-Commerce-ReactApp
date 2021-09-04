@@ -6,13 +6,27 @@
   font-size: 1.6rem;
 }
 
-.checkout__ad {
-  width: 100%;
-  margin-bottom: 10px;
+.checkout__left {
+  flex: 0.8;
+}
+
+.checkout__right {
+  flex: 0.2;
 }
 
 .checkout__title {
   margin-right: 10px;
   padding: 10px;
   border-bottom: 1px solid lightgray;
+}
+
+@media (max-width: 950px) {
+  .checkout {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .checkout__right {
+    margin-top: 50px;
+  }
 }
